@@ -7,7 +7,7 @@
 }
 
 a {
-  color: rgb(26, 87, 202);
+  color: white;
   text-decoration: unset;
 }
 
@@ -27,6 +27,11 @@ input[type="sutmit"] {
 
 h1, h2, h3, h4, h5, h6, p, ul, ol {
   margin: 1rem 0;
+}
+
+#header {
+  background-color: rgb(21, 55, 94);
+  display: flex;
 }
 
 .App {
@@ -49,8 +54,6 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
