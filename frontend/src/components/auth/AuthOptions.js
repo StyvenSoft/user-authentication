@@ -18,11 +18,18 @@ export default function AuthOptions() {
     const history = useHistory();
     const register = () => history.push("/register");
     const login = () => history.push("/login");
+    const logout = () => {
+        setUserData({
+            token: undefined,
+            user: undefined
+        });
+        localStorage.setItem("auth-token", "");
+    };
 
     return (
         <nav>
             {userData.user ? (
-                <button>Logout</button>
+                <Button className={classes.button} color="inherit" onClick={logout}>Logout</Button>
             ) : (
                     <>
                         <Button className={classes.button} color="inherit" onClick={register}>Register</Button>
