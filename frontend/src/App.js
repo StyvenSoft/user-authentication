@@ -16,27 +16,27 @@ export default function App() {
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      const token = localStorage.getItem("auth-token");
+      let token = localStorage.getItem("auth-token");
       if (token === null) {
-        localStorage.setItem("auth-token", "")
+        localStorage.setItem("auth-token", "");
         token = "";
       }
-
       const tokenRes = await Axios.post(
         "http://localhost:4000/users/tokenIsValid",
         null,
-        { headers: { "x-auth-token": token } }
-      );
+        { headers: { "x-auth-token": token } 
+      });
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:4000/users/",
-          { header: { "x-auth-token": token} 
+        const userRes = await Axios.get("http://localhost:4000/users/", {
+          headers: { "x-auth-token": token },
         });
         setUserData({
           token,
-          user: userRes.data
+          user: userRes.data,
         });
       }
-    }
+    };
+
     checkLoggedIn();
   }, []);
 
