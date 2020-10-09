@@ -85,7 +85,7 @@ export default function Register() {
                         className={classes.textfield}
                         onChange={(e) => setPasswordCheck(e.target.value)}
                     />
-                    <Button variant="contained" type="submit" style={{ width: '80%', marginTop: '30px' }}>
+                    <Button variant="contained" type="submit" style={{ width: '95%', marginTop: '30px' }}>
                         Register
                     </Button>
                 </form>

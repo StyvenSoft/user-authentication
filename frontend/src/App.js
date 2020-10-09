@@ -41,7 +41,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="App App-header">
+    <div className="App-header">
       <BrowserRouter>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Header />

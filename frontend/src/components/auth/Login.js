@@ -66,7 +66,7 @@ export default function Login() {
                         className={classes.textfield}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button variant="contained" type="submit" style={{ width: '80%', marginTop: '30px' }}>
+                    <Button variant="contained" type="submit" style={{ width: '95%', marginTop: '30px' }}>
                         Login
                     </Button>
                 </form>
