@@ -6,6 +6,7 @@ import { Container } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import ErrorNotice from '../misc/ErrorNotice';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -31,26 +32,33 @@ export default function Login() {
     const classes = useStyles();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const [error, setError] = useState();
 
     const { setUserData } = useContext(UserContext);
     const history = useHistory();
 
     const submit = async (e) => {
         e.preventDefault();
-        const loginUser = { email, password };
-        const loginRes = await Axios.post("http://localhost:4000/users/login", loginUser);
-        setUserData({
-            token: loginRes.data.token,
-            user: loginRes.data.user,
-        });
-        localStorage.setItem("auth-token", loginRes.data.token);
-        history.push("/");
+
+        try {
+            const loginUser = { email, password };
+            const loginRes = await Axios.post("http://localhost:4000/users/login", loginUser);
+            setUserData({
+                token: loginRes.data.token,
+                user: loginRes.data.user,
+            });
+            localStorage.setItem("auth-token", loginRes.data.token);
+            history.push("/");
+        } catch (err) {
+            err.response.data.msg && setError(err.response.data.msg);
+        }
     };
 
     return (
         <div>
             <Container maxWidth="xs">
                 <h2>Login</h2>
+                {error && (<ErrorNotice message={error} clearError={() => setError(undefined)} />)}
                 <form className={classes.root} noValidate autoComplete="off" onSubmit={submit}>
                     <TextField
                         id="standard-basic"
