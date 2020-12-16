@@ -19,6 +19,10 @@ app.listen(PORT, () => {
     console.log(`Server in listenig on http://localhost:${PORT}`);
 });
 
+app.get('/', (req, res, next) => {
+    res.send("Working...");
+})
+
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
