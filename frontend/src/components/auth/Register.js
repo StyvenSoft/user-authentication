@@ -44,8 +44,8 @@ export default function Register() {
 
         try {
             const newUser = { displayName, email, password, passwordCheck };
-            await Axios.post("http://localhost:4000/users/register", newUser);
-            const loginRes = await Axios.post("http://localhost:4000/users/login", {
+            await Axios.post("https://arcane-sands-54721.herokuapp.com/users/register", newUser);
+            const loginRes = await Axios.post("https://arcane-sands-54721.herokuapp.com/users/login", {
                 email, password,
             });
             setUserData({

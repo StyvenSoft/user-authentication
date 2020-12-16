@@ -22,12 +22,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:4000/users/tokenIsValid",
+        "https://arcane-sands-54721.herokuapp.com/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } 
       });
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:4000/users/", {
+        const userRes = await Axios.get("https://arcane-sands-54721.herokuapp.com/users/", {
           headers: { "x-auth-token": token },
         });
         setUserData({

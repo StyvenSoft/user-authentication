@@ -42,7 +42,7 @@ export default function Login() {
 
         try {
             const loginUser = { email, password };
-            const loginRes = await Axios.post("http://localhost:4000/users/login", loginUser);
+            const loginRes = await Axios.post("https://arcane-sands-54721.herokuapp.com/users/login", loginUser);
             setUserData({
                 token: loginRes.data.token,
                 user: loginRes.data.user,
